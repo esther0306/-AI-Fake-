@@ -30,7 +30,7 @@
 
 | 버전 | 이름 | 주요 특징 |
 |------|------|-----------|
-| A | `jiwoo's_test_method`[보기](./models/jiwoo's_test_method.py) | 무음 샘플 포함, 일반적인 mixup, 기본 추론 |
+| A | `jiwoo's_test_method`[보기](./jiwoo's_test_method.py) | 무음 샘플 포함, 일반적인 mixup, 기본 추론 |
 | B | `jisoo's_test` | 무음 + 1초 단위 분할 → 평균 추론 |
 | C | `resnet_sinhwa's_test_method` | segment 평균 기반 추론, 5세그먼트 처리 |
 | D | `sinhwa's_method_e8` | sinhwa_v1에서 **Epoch 증가(8회)** → 최종 성능 개선 |
