@@ -81,8 +81,8 @@
 - **Loss**: Binary Cross Entropy
 - **Optimizer**: Adam (lr=0.001)
 - **Scheduler**: ReduceLROnPlateau
----
-## 🧠 최종 앙상블
+
+##  최종 앙상블
 
 - **Soft Voting (확률 평균)** 방식 사용:
 
