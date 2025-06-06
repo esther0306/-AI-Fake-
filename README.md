@@ -21,3 +21,31 @@
   1,264개의 오디오 샘플 (Label 미제공, 평가 데이터와 환경 동일)
 
 자세한 내용 및 데이터 출처: [Dacon 대회 페이지](https://dacon.io/competitions/official/236253/data)
+
+---
+
+## 🧪 Noise 제거 처리
+
+- **사용 모델:** [DeepFilterNet V3](https://github.com/Rikorose/DeepFilterNet)  
+- **방법:**  
+  Dacon에서 제공한 사전 학습된 가중치를 이용해 **테스트 데이터의 노이즈 제거 수행**  
+  (추가적인 학습은 진행하지 않음)
+
+---
+## 🧪 학습 및 모델링 개요
+### 🧼 데이터 전처리
+
+- **샘플 길이 통일:**  
+  입력 오디오가 5초(=32,000 samples)보다 길 경우 무작위로 5초를 **Crop**, 짧은 경우 **Zero-padding** 수행
+- **무음 샘플 생성:**  
+  학습의 일반화와 강건함을 위해 **무작위 5%의 샘플을 무음(zero waveform)으로 대체**
+- **Waveform 증강:**  
+  `RandomCrop(1초)` 을 포함한 파형 기반 증강 기법 적용
+
+
+
+
+
+
+
+
