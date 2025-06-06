@@ -22,7 +22,19 @@
 자세한 내용 및 데이터 출처: [Dacon 대회 페이지](https://dacon.io/competitions/official/236253/data)
 
 ---
-# 학습 및 모델링 개요
+# 모델 설계 및 학습 전략 (총 4개 실험)
+본 프로젝트에서는 총 **4개의 1D ResNet18 기반 모델**을 실험한 후, **soft voting 앙상블**을 적용하여 최종 성능을 향상
+모든 모델은 **원시 waveform 입력**을 사용하며, **multi-label 이진 분류 구조**로 Fake/Real 음성 동시 예측 가능
+
+## 🔄 실험 모델 요약
+
+| 버전 | 이름 | 주요 특징 |
+|------|------|-----------|
+| A | `jiwoo` | 무음 샘플 포함, 일반적인 mixup, 기본 추론 |
+| B | `jisoo` | 무음 + 1초 단위 분할 → 평균 추론 |
+| C | `sinhwa_v1` | segment 평균 기반 추론, 5세그먼트 처리 |
+| D | `sinhwa_v2 (e8)` | sinhwa_v1에서 **Epoch 증가(8회)** → 최종 성능 개선 |
+
 ## 🧪 Noise 제거 처리
 
 - **사용 모델:** [DeepFilterNet V3](https://github.com/Rikorose/DeepFilterNet)  
@@ -31,7 +43,7 @@
   (추가적인 학습은 진행하지 않음)
 
 ---
-### 🧼 데이터 전처리
+## 공통 데이터 전처리
 
 - **샘플 길이 통일:**  
   입력 오디오가 5초(=32,000 samples)보다 길 경우 무작위로 5초를 **Crop**, 짧은 경우 **Zero-padding** 수행
@@ -42,7 +54,7 @@
 
 ---
 
-### 🧠 모델 구성
+## 모델 구성
 
 - **1D ResNet-18** 아키텍처 기반
   - 입력: 1채널 waveform (Conv1D)
