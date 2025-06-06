@@ -42,6 +42,18 @@
 - **Waveform 증강:**  
   `RandomCrop(1초)` 을 포함한 파형 기반 증강 기법 적용
 
+---
+
+### 🧠 모델 구성
+
+- **1D ResNet-18** 아키텍처 기반
+  - 입력: 1채널 waveform (Conv1D)
+  - 특징 추출: 4개 블록 (64 → 128 → 256 → 512)
+  - 출력: 2개의 sigmoid 활성화로 **[Fake, Real] 다중 레이블** 확률 예측
+
+- **Mixup 학습 전략**:
+  - 두 waveform과 라벨을 섞어 `Fake-Fake`, `Real-Real`, `Fake-Real` 조합 학습 가능
+  - 무음([0,0]) 샘플은 mixup 대상에서 제외하여 label 왜곡 방지
 
 
 
