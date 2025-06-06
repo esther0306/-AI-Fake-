@@ -61,13 +61,30 @@
   - 특징 추출: 4개 블록 (64 → 128 → 256 → 512)
   - 출력: 2개의 sigmoid 활성화로 **[Fake, Real] 다중 레이블** 확률 예측
 
-- **Mixup 학습 전략**:
-  - 두 waveform과 라벨을 섞어 `Fake-Fake`, `Real-Real`, `Fake-Real` 조합 학습 가능
-  - 무음([0,0]) 샘플은 mixup 대상에서 제외하여 label 왜곡 방지
+- **Mixup 학습**:
+  - `[Fake, Fake]`, `[Real, Real]`, `[Fake + Real]` 조합 대응
+  - 무음([0,0]) 샘플은 mixup 대상에서 제외
 
+- **데이터 증강**:
+  - 1초 단위 RandomCrop
+  - 무작위로 5% 무음 샘플 삽입
 
+- **추론 기법 차이**:
+  - 일부 모델은 **5초 waveform → 1초 단위 분할**,  
+    예측 결과 평균으로 최종 판단
 
+## 🧩 공통 모델 구조
 
+- **모델**: ResNet18 기반의 1D CNN
+- **입력**: `[B, 1, 32000]` (waveform)
+- **출력**: `[B, 2]` → [Fake 확률, Real 확률]
+- **Loss**: Binary Cross Entropy
+- **Optimizer**: Adam (lr=0.001)
+- **Scheduler**: ReduceLROnPlateau
+---
+## 🧠 최종 앙상블
+
+- **Soft Voting (확률 평균)** 방식 사용:
 
 
 
