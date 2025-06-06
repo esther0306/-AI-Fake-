@@ -87,7 +87,7 @@
 ##  최종 앙상블
 
 - **Soft Voting (확률 평균)** 방식 사용
-- 결과 [보기](./byebye.csv)
+- 결과 CSV [보기](./byebye.csv)
 ![image](https://github.com/user-attachments/assets/045d2f1d-f891-4bb5-a996-ac486bbfab83)
 
 
