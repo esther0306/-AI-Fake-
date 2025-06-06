@@ -1,4 +1,6 @@
 # SW중심대학 디지털 경진대회_SW와 생성AI의 만남 : AI 부문
+![image](https://github.com/user-attachments/assets/4db8d174-fe0d-4b94-ba0e-e284c4705d96)
+
 > **주제:** 생성 AI의 가짜(Fake) 음성 검출 및 탐지  
 > **팀원:** 이신화, 이지수, 김지우, 김소연  
 > **참여 기간:** 2024.07.01 ~ 2024.07.19 09:59
